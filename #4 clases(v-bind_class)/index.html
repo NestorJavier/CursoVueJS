@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hola Mundo con Vue.js</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app" class="container mt5">
+        <div :class="['p-3', 'text-white', fondo]">
+            <!--para agregar clases con vue se ponen los dos puntos antes de la palabra class-->
+            <p>
+                <!-- p-3 es un padding de 3 que traemos desde bootstrap pero para que funcione debemos poner comillas simples 'p-3', -->
+                <!--para agregar mas clases no basta solo con hacer espacio entre cada una de ellas, hay que tratarlas como un array es decir :class="['p-3', 'otraclase']", la propiedad fondo es traida desde el js -->
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas laudantium rerum odit impedit porro,
+                expedita culpa veritatis eaque ad modi consequuntur, voluptatum aspernatur. Esse iure hic officiis eius
+                omnis nesciunt.
+            </p>
+        </div>
+        <input type="text" class="form-control my-3" v-model="fondo">
+        <!--Como el input esta conectado a la propiedad fondo mediante el v-model nosotros podemos modificar la clase directamente desde el input-->
+        <div class="text-white p-3" :class="{'bg-info' : color, 'bg-success' : !color}"><!--Estas son condicinales 'bg-info' : color, 'bg-success' : !color, que quiere decir, if(color){'bg-info'//Se establece 'bg-info' como clase, luego se pone una coma para hacer el otro condicional que dice, if(!color){'bg-success'//Se establece 'bg-success' como clase}-->
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis dolor voluptatem illo, iure alias
+                error laboriosam expedita rem maxime vel optio enim facere ex neque porro repudiandae dignissimos fugit
+                quidem.</p>
+        </div>
+        <button class="btn btn-primary" @click="color = !color">Cambiar</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

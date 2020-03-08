@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hola Mundo con Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{titulo}}</h1><!--Interpolamos usando doble llave y dentro de las llaves escribimos el nombre de la una propiedad que esta dentro de "data"-->
+        <input type="text" v-model="nuevaFruta" @keyup.enter="agregarFruta"><!--v-on:keyup.enter evento de la tecla enter dentro del text input, tambien funciona @keyup.enter, existen mas teclas no solo enter-->
+        <button @click="agregarFruta" >agregar</button><!--v-on:click evento del boton o tambien funciona @click-->
+        <ul>
+            <li v-for="fruta of frutas"><!--ciclo for, el cual recorre el arreglo "frutas", es como un for each, entonces "fruta" es un elemento del arreglo-->
+                <input type="number" v-model.number="fruta.cantidad"><!--v-model.number, el .number indica que el valor del input es numerico y no una cadena de texto-->
+                {{fruta.nombre}}
+                <button @click="fruta.cantidad++">+</button><!--++ tiene la misma función de siempre, tambien pudo haber funcionado como fruta.cantidad = fruta.cantidad+1 -->
+                <span v-if="fruta.cantidad === 0">
+                    - Sin Stock
+                </span> </li>    
+        </ul>
+        <h4>total: {{sumarFrutas}}</h4>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
